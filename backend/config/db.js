@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
-
+import dotenv from 'dotenv'
+dotenv.config();
 export const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb+srv://user12:qwerty12345@cluster0.mzjkeq8.mongodb.net/food-del', {
+        const uri=process.env.MONGO_URI;
+        await mongoose.connect(uri, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
